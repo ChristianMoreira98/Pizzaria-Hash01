@@ -1,6 +1,742 @@
-*{
+/* Importa a fonte "Roboto" do Google Fonts em diversos estilos e pesos. */
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
+ 
+ 
+/* Define variáveis globais para cores e bordas, facilitando a manutenção e ajustes futuros. */
+:root {
+    --main-color: #da190f;
+    --bg: #13131a;
+    --bg-card: #0c0c14;
+    --border: 0.1rem solid grey;
+}
+ 
+/* Remove margens, paddings e bordas padrões.
+Define o comportamento de transição padrão para animações e utiliza a fonte Roboto.
+A propriedade text-transform: capitalize garante que todas as palavras comecem com letra maiúscula. */
+* {
     margin: 0;
     padding: 0;
-    list-style: none;
+    box-sizing: border-box;
+    outline: none;
+    border: none;
     text-decoration: none;
+    text-transform: capitalize;
+    /*LETRAS MAISCULA*/
+    transition: 0.2s linear;
+    font-family: 'Roboto', 'sans-serif';    
 }
+ 
+ 
+/* Configura o font-size para 62.5%, facilitando o uso de rem (1rem = 10px).
+Evita rolagem horizontal com overflow-x: hidden. (itens não estouram)
+Adiciona comportamento de rolagem suave. */
+html {
+    font-size: 62.5%;
+    overflow-x: hidden;
+    /*ocutar qualquer elemento que passa da tela (horizontal)*/
+    scroll-padding-top: 9rem;
+    scroll-behavior: smooth;
+}
+ 
+html::-webkit-scrollbar {
+    /*Personaliza o estilo da barra de rolagem no WebKit (Chrome e Safari)*/
+    width: 0.8rem;
+}
+ 
+ 
+html::-webkit-scrollbar-track {
+    /*Personaliza o estilo da barra de rolagem no WebKit (Chrome e Safari)*/
+    background: transparent;
+}
+ 
+html::-webkit-scrollbar-thumb {
+    /*Personaliza o estilo da barra de rolagem no WebKit (Chrome e Safari)*/
+    background: #fff;
+    border-radius: 5rem;
+}
+ 
+ 
+body {
+    background: var(--bg);
+    /*Define o fundo da página com a variável --bg.*/
+}
+ 
+ 
+section {
+    padding: 2rem 7%;
+    /*Garante espaçamento interno nas seções.*/
+}
+ 
+.heading {
+    text-align: center;
+    color: #fff;
+    text-transform: uppercase;
+    /* Texto em caixa alta*/
+    padding-bottom: 3rem;
+    font-size: 4rem;
+ 
+}
+ 
+ 
+.heading span {
+    color: var(--main-color);
+    text-transform: uppercase;
+    /*Texto caixa alta*/
+}
+ 
+.btn {
+    margin-top: 1rem;
+    display: inline-block;
+    padding: 0.9rem 3rem;
+    font-size: 1.7rem;
+    color: #fff;
+    background: var(--main-color);
+    cursor: pointer;
+}
+ 
+.btn:hover {
+    letter-spacing: 0.2rem;
+    /*Espaçamento entre as letras ao passar o mouse*/
+}
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+/* header */
+ 
+.header {
+    background: var(--bg);
+    /* Fundo igual ao corpo */
+    display: flex;
+    /* Usa flexbox para alinhar itens */
+    align-items: center;
+    /* Alinha verticalmente os itens ao centro */
+    justify-content: space-between;
+    /* Espaça itens igualmente */
+    padding: 1.5rem 7%;
+    /* Adiciona espaçamento interno */
+    border-bottom: var(--border);
+    /* Adiciona borda inferior */
+    position: fixed;
+    /* Fixa no topo da tela */
+    top: 0;
+    /* Define a posição inicial no topo */
+    left: 0;
+    /* Posiciona à esquerda */
+    right: 0;
+    /* Preenche até a direita */
+    z-index: 999;
+    /* Eleva o cabeçalho acima de outros elementos */
+}
+ 
+ 
+ 
+.header .logo img {
+    height: 6.5rem;
+    /* Define altura do logo */
+    border-radius: 100%;
+    /* Torna o logo circular */
+}
+ 
+ 
+.header nav a {
+    margin: 0 1rem;
+    /* Espaçamento lateral entre links */
+    font-size: 1.6rem;
+    /* Tamanho do texto dos links */
+    color: #fff;
+    /* Cor branca para links */
+}
+ 
+ 
+.header nav a:hover {
+    color: var(--main-color);
+    /* Muda a cor no hover */
+    border-bottom: 0.1rem solid var(--main-color);
+    /* Adiciona uma linha inferior no hover */
+    padding-bottom: 0.5rem;
+    /* Adiciona espaçamento inferior no hover */
+}
+ 
+.header .icons {
+    display: flex;
+    /* Usa flexbox para alinhar ícones */
+    align-items: center;
+    /* Alinha ícones verticalmente */
+}
+ 
+.header .icons div {
+    margin-left: 2rem;
+    /* Espaçamento entre os ícones */
+}
+ 
+ 
+.header .icons div ion-icon {
+    color: #fff;
+    /* Cor branca para ícones */
+    cursor: pointer;
+    /* Altera o cursor ao passar sobre o ícone */
+    font-size: 2.5rem;
+    /* Tamanho dos ícones */
+}
+ 
+.header .icons div ion-icon:hover {
+    color: var(--main-color);
+    /* Muda a cor do ícone ao passar o mouse */
+}
+ 
+#menu-btn {
+    display: none;
+    /* Oculta o botão de menu por padrão */
+}
+ 
+ 
+ 
+ 
+ 
+ 
+/* Home */
+#home {
+    position: relative;
+    /* Permite posicionamento relativo */
+    min-height: 85vh;
+    /* Altura mínima da seção */
+    display: flex;
+    /* Usa flexbox para centralizar conteúdo */
+    align-items: center;
+    /* Centraliza verticalmente */
+    background: url(images/home.jpg) no-repeat;
+    /* Adiciona imagem de fundo */
+    background-size: cover;
+    /* Faz a imagem cobrir o container */
+    background-position: center;
+    /* Centraliza a imagem de fundo */
+    border-bottom: var(--border);
+    /* Adiciona borda inferior */
+}
+ 
+ 
+ 
+#home::before {
+    content: "";
+    /* Adiciona pseudo-elemento vazio */
+    position: absolute;
+    /* Permite posicionamento absoluto */
+    top: 0;
+    /* Alinha ao topo */
+    left: 0;
+    /* Alinha à esquerda */
+    width: 100%;
+    /* Ocupa toda a largura */
+    height: 100%;
+    /* Ocupa toda a altura */
+    background: rgba(0, 0, 0, 0.5);
+    /* Adiciona sobreposição escura */
+    z-index: 1;
+    /* Posiciona abaixo do conteúdo */
+}
+ 
+ 
+#home .content {
+    max-width: 60rem;
+    /* Define largura máxima */
+    position: relative;
+    /* Permite manipular a posição */
+    z-index: 2;
+    /* Garante que o conteúdo fique acima da sobreposição */
+}
+ 
+#home .content h3 {
+    font-size: 6rem;
+    /* Tamanho do título */
+    text-transform: uppercase;
+    /* Texto em caixa alta */
+    color: #fff;
+    /* Cor branca */
+}
+ 
+ 
+#home .content p {
+    font-size: 2rem;
+    /* Tamanho da fonte para parágrafos */
+    font-weight: lighter;
+    /* Peso da fonte mais leve */
+    line-height: 1.8;
+    /* Espaçamento entre linhas */
+    padding: 1rem 0;
+    /* Espaçamento vertical */
+    color: #fff;
+    /* Cor branca */
+}
+ 
+ 
+ 
+ 
+ 
+ 
+/* Sessão ABOUT */
+ 
+.row {
+    display: flex;
+    /* Define um layout flexível para os itens internos */
+    align-items: center;
+    /* Alinha os itens ao centro verticalmente */
+    background: var(--bg-card);
+    /* Aplica uma cor de fundo aos elementos da linha */
+    flex-wrap: wrap;
+    /* Permite que os itens quebrem para a próxima linha se necessário */
+    border: var(--border);
+    /* Aplica uma borda ao redor da linha */
+}
+ 
+.row .image {
+    flex: 1 1 45rem;
+    /* Define o tamanho flexível do elemento: base 45rem, pode crescer ou encolher */
+}
+ 
+.row .image img {
+    width: 100%;
+    /* Faz com que a imagem ocupe toda a largura do container */
+}
+ 
+.row .content {
+    flex: 1 1 45rem;
+    /* Define o tamanho flexível do conteúdo: base 45rem, pode crescer ou encolher */
+    padding: 2rem;
+    /* Adiciona espaçamento interno ao redor do conteúdo */
+}
+ 
+.row .content h3 {
+    font-size: 3rem;
+    /* Define o tamanho da fonte para o título */
+    color: #fff;
+    /* Aplica a cor branca ao título */
+}
+ 
+.row .content p {
+    font-size: 1.6rem;
+    /* Define o tamanho da fonte para o parágrafo */
+    color: #ccc;
+    /* Define uma cor cinza clara para o texto */
+    padding: 1rem 0;
+    /* Adiciona espaçamento interno vertical ao texto */
+    line-height: 1.8rem;
+    /* Define o espaçamento entre linhas do texto */
+}
+ 
+ 
+ 
+ 
+ 
+ 
+/* MENU */
+ 
+.menu .box-container {
+    display: grid;
+    /* Organiza os elementos internos em um layout de grade */
+    grid-template-columns: repeat(auto-fit, minmax(30rem, 1fr));
+    /* Cria colunas flexíveis com largura mínima de 30rem e máxima proporcional */
+    gap: 1.5rem;
+    /* Define o espaçamento entre os itens da grade */
+}
+ 
+.menu .box-container .box {
+    padding: 5rem;
+    /* Adiciona espaçamento interno ao redor do conteúdo da caixa */
+    text-align: center;
+    /* Centraliza o texto horizontalmente */
+    border: var(--border);
+    /* Aplica uma borda ao redor da caixa */
+    background: var(--bg-card);
+    /* Define a cor de fundo da caixa */
+}
+ 
+.menu .box-container .box img {
+    height: 18rem;
+    /* Define a altura da imagem */
+    border-radius: 100%;
+    /* Torna a imagem circular */
+}
+ 
+.menu .box-container .box h3 {
+    color: #fff;
+    /* Aplica a cor branca ao título */
+    font-size: 2rem;
+    /* Define o tamanho da fonte do título */
+    padding: 1rem 0;
+    /* Adiciona espaçamento vertical ao título */
+}
+ 
+.menu .box-container .box .price {
+    color: #fff;
+    /* Define a cor branca para o preço */
+    font-size: 2.5rem;
+    /* Define o tamanho da fonte do preço */
+    padding: 0.5rem 0;
+    /* Adiciona espaçamento vertical ao preço */
+}
+ 
+.menu .box-container .box .price span {
+    font-size: 1.5rem;
+    /* Define o tamanho da fonte para o preço original */
+    text-decoration: line-through;
+    /* Aplica uma linha para indicar preço riscado */
+    font-weight: lighter;
+    /* Aplica um peso de fonte mais fino */
+}
+ 
+.menu .box-container .box:hover {
+    background: #fff;
+    /* Altera a cor de fundo para branco ao passar o mouse */
+}
+ 
+.menu .box-container .box:hover>* {
+    color: black;
+    /* Altera a cor dos elementos filhos para preto ao passar o mouse */
+}
+ 
+ 
+ 
+ 
+ 
+ 
+/* PROMOÇÕES */
+ 
+ 
+.products .box-container {
+    display: grid;
+    /* Organiza os elementos em uma grade */
+    grid-template-columns: repeat(auto-fit, minmax(30rem, 1fr));
+    /* Cria colunas flexíveis com largura mínima de 30rem e máxima proporcional */
+    gap: 1.5rem;
+    /* Define o espaçamento entre os itens da grade */
+}
+ 
+.products .box-container .box {
+    text-align: center;
+    /* Centraliza o conteúdo textualmente */
+    border: var(--border);
+    /* Aplica uma borda ao redor da caixa */
+    padding: 2rem;
+    /* Adiciona espaçamento interno na caixa */
+}
+ 
+.products .box-container .box .icons a ion-icon {
+    height: 3rem;
+    /* Define a altura dos ícones */
+    width: 3rem;
+    /* Define a largura dos ícones */
+    line-height: 3rem;
+    /* Centraliza verticalmente o conteúdo do ícone */
+    font-size: 1.7rem;
+    /* Define o tamanho da fonte para os ícones */
+    border: var(--border);
+    /* Aplica uma borda ao redor dos ícones */
+    color: #fff;
+    /* Define a cor branca para os ícones */
+    margin: 0.3rem;
+    /* Adiciona espaçamento entre os ícones */
+}
+ 
+.products .box-container .box .icons a ion-icon:hover {
+    background: var(--main-color);
+    /* Altera o fundo dos ícones para a cor principal ao passar o mouse */
+}
+ 
+.products .box-container .box .image {
+    padding: 2.5rem 0;
+    /* Adiciona espaçamento vertical ao redor da imagem */
+}
+ 
+.products .box-container .box .image img {
+    height: 25rem;
+    /* Define a altura das imagens */
+}
+ 
+.products .box-container .box .content {
+    color: #fff;
+    /* Define a cor branca para o conteúdo textual */
+    font-size: 2.5rem;
+    /* Define o tamanho da fonte para o conteúdo */
+}
+ 
+.products .box-container .box .content .stars {
+    padding: 1.5rem;
+    /* Adiciona espaçamento ao redor da área de estrelas */
+}
+ 
+.products .box-container .box .content .stars ion-icon {
+    font-size: 1.9rem;
+    /* Define o tamanho das estrelas */
+    color: var(--main-color);
+    /* Aplica a cor principal às estrelas */
+}
+ 
+.products .box-container .box .content .price {
+    color: #fff;
+    /* Define a cor branca para o preço */
+    font-size: 2.5rem;
+    /* Define o tamanho da fonte para o preço */
+}
+ 
+.products .box-container .box .content .price span {
+    font-weight: lighter;
+    /* Aplica uma fonte mais fina para o texto adicional do preço */
+    font-size: 1.5rem;
+    /* Define o tamanho da fonte para o texto adicional */
+    text-transform: lowercase;
+    /* Transforma o texto adicional para letras minúsculas */
+}
+ 
+ 
+ 
+ 
+ 
+/* REVIEW */
+ 
+ 
+.review .box-container {
+    display: grid;
+    /* Organiza os elementos em uma grade */
+    grid-template-columns: repeat(auto-fit, minmax(30rem, 1fr));
+    /* Cria colunas flexíveis com largura mínima de 30rem e máxima proporcional */
+    gap: 1.5rem;
+    /* Define o espaçamento entre os itens da grade */
+}
+ 
+.review .box-container .box {
+    border: var(--border);
+    /* Aplica uma borda ao redor de cada caixa */
+    text-align: center;
+    /* Centraliza o conteúdo textualmente */
+    padding: 3rem 2rem;
+    /* Adiciona espaçamento interno à caixa */
+}
+ 
+.review .box-container .box p {
+    font-size: 1.7rem;
+    /* Define o tamanho da fonte para o parágrafo */
+    line-height: 1.8;
+    /* Define o espaçamento entre linhas do texto */
+    color: #ccc;
+    /* Define uma cor cinza clara para o texto */
+    padding: 2rem 0;
+    /* Adiciona espaçamento vertical ao parágrafo */
+}
+ 
+.user {
+    height: 10rem;
+    /* Define a altura da imagem do usuário */
+    width: 10rem;
+    /* Define a largura da imagem do usuário */
+    border-radius: 50%;
+    /* Torna a imagem circular */
+    object-fit: cover;
+    /* Ajusta a imagem para preencher o container sem distorção */
+}
+ 
+.review .box-container .box h3 {
+    padding: 1rem 0;
+    /* Adiciona espaçamento vertical ao título */
+    color: #fff;
+    /* Define a cor branca para o título */
+    font-size: 2.2rem;
+    /* Define o tamanho da fonte para o título */
+}
+ 
+.review .box-container .box .stars ion-icon {
+    font-size: 1.7rem;
+    /* Define o tamanho dos ícones de estrela */
+    color: var(--main-color);
+    /* Aplica a cor principal aos ícones de estrela */
+}
+ 
+ 
+ 
+ 
+ 
+/* footer */
+.title-footer {
+    text-align: center;
+    /* Centraliza o texto */
+    text-transform: uppercase;
+    /* Converte o texto para letras maiúsculas */
+    font-size: 2rem;
+    /* Define o tamanho da fonte */
+    color: #fff;
+    /* Define a cor do texto como branco */
+    margin-bottom: 1.5rem;
+    /* Adiciona espaço abaixo do título */
+}
+ 
+.title-footer span {
+    color: var(--main-color);
+    /* Aplica a cor principal ao texto dentro do span */
+    text-transform: uppercase;
+    /* Converte o texto para letras maiúsculas */
+}
+ 
+.footer {
+    background: var(--bg);
+    /* Define a cor de fundo do rodapé */
+    text-align: center;
+    /* Centraliza o texto */
+    padding: 4rem 0;
+    /* Adiciona espaçamento interno vertical ao rodapé */
+}
+ 
+.footer .container {
+    display: flex;
+    /* Ativa o layout flexível */
+    flex-wrap: wrap;
+    /* Permite que os itens quebrem para a próxima linha */
+    justify-content: space-between;
+    /* Distribui os itens com espaço entre eles */
+    padding: 0 7%;
+    /* Adiciona espaçamento interno horizontal */
+}
+ 
+.content-1 {
+    flex: 1 1 25rem;
+    /* Define tamanho flexível com largura mínima de 25rem */
+    margin: 1rem;
+    /* Adiciona espaçamento ao redor do conteúdo */
+}
+ 
+.content-1 ul {
+    list-style: none;
+    /* Remove os marcadores de lista */
+    padding: 0;
+    /* Remove o espaçamento interno padrão */
+}
+ 
+.content-1 ul li {
+    margin-bottom: 1rem;
+    /* Adiciona espaçamento inferior entre os itens da lista */
+}
+ 
+.content-1 ul li a {
+    color: #ccc;
+    /* Define a cor do texto como cinza claro */
+    text-decoration: none;
+    /* Remove o sublinhado do link */
+    font-size: 1.6rem;
+    /* Define o tamanho da fonte */
+    transition: color 0.3s;
+    /* Aplica uma transição suave na mudança de cor */
+}
+ 
+.content-1 ul li a:hover {
+    color: var(--main-color);
+    /* Altera a cor para a cor principal ao passar o mouse */
+}
+ 
+.social-links {
+    display: flex;
+    /* Ativa o layout flexível */
+    gap: 1rem;
+    /* Define o espaçamento entre os itens */
+    justify-content: center;
+    /* Centraliza os itens horizontalmente */
+    margin-top: 1.5rem;
+    /* Adiciona espaço acima das redes sociais */
+}
+ 
+.social-links a {
+    color: #ccc;
+    /* Define a cor inicial dos ícones */
+    font-size: 3rem;
+    /* Define o tamanho dos ícones */
+    transition: color 0.3s;
+    /* Adiciona uma transição suave para a mudança de cor */
+}
+ 
+.social-links a:hover {
+    color: var(--main-color);
+    /* Altera a cor para a cor principal ao passar o mouse */
+}
+ 
+.footer-bottom {
+    text-align: center;
+    /* Centraliza o texto */
+    padding: 1rem 0;
+    /* Adiciona espaçamento interno vertical */
+    font-size: 1.6rem;
+    /* Define o tamanho da fonte */
+    border-top: var(--border);
+    /* Adiciona uma borda superior */
+    margin-top: 2rem;
+    /* Adiciona espaço acima do rodapé inferior */
+    color: #ccc;
+    /* Define a cor do texto como cinza claro */
+}
+ 
+ 
+ 
+@media (max-width: 991px) {
+    html {
+        font-size: 55%;
+    }
+ 
+ 
+    .header {
+        padding: 1.5rem 2rem;
+    }
+ 
+ 
+    section {
+        padding: 2rem;
+    }
+}
+ 
+ 
+@media (max-width: 768px) {
+    #menu-btn {
+        display: inline-block;
+    }
+ 
+    .header nav {
+        position: absolute;
+        top: 100%;
+        right: -100%;
+        background: #fff;
+        width: 30rem;
+        height: calc(100vh - 9.5rem);
+    }
+ 
+    .header nav a {
+        color: var(--bg-card);
+        display: block;
+        margin: 1.5rem;
+        padding: 0.5;
+        font-size: 2rem;
+    }
+ 
+    .home {
+        background-position: left;
+        justify-content: center;
+        text-align: center;
+    }
+ 
+    .home .content h3 {
+        font-size: 4.5rem;
+    }
+ 
+    .home .content p {
+        font-size: 1.7rem;
+    }
+}
+ 
+ 
+@media (max-width: 450px) {
+    html {
+        font-size: 50%;
+    }
+}
+ 
