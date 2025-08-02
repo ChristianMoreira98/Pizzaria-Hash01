@@ -1,5 +1,4 @@
-Pizzaria Hash
-
+Pizzaria Hash🍕
 
 📋 Especificações Técnicas Obrigatórias
 Pizzaria-Hash01 é um sistema web desenvolvido para gerenciar uma pizzaria, incluindo funcionalidades para exibir cardápio, registrar pedidos, calcular valores e acompanhar status dos pedidos. Este projeto foi criado para aplicar conhecimentos em desenvolvimento web, com foco em boas práticas de programação e experiência do usuário.
